@@ -1,0 +1,195 @@
+<html>
+<head>
+   <style>
+		img
+		{
+			position: absolute;
+			top:0px;
+			left:0px;
+			margin:20px;
+			width: 800px;
+			z-index: -1;
+		}
+		.content
+		{
+			margin-top: 565px;
+			visibility: hidden;
+		}
+		
+		#first
+		{
+			position: absolute;
+			top: 100px;
+			left: 75px;
+			background-color: white;
+			width: 929px;
+			height: 450px;
+		}
+
+		#second
+		{
+			position: absolute;
+			top: 80px;
+			left: 20px;
+			background-color: white;
+			width: 60px;
+			height: 600px;
+		}
+
+		#third
+		{
+			position: absolute;
+			top: 550px;
+			left: 0px;
+			background-color: white;
+			width: 930px;
+			height: 100px;
+		}
+
+		#fourth
+		{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: white;
+			width: 350px;
+			height: 80px;
+		}
+
+		#fourth2
+		{
+			position: absolute;
+			top: 0px;
+			left: 350px;
+			background-color: white;
+			width: 450px;
+			height: 80px;
+		}
+
+#start-button
+		{
+			position: absolute;
+			left: 425px;
+			top: 200px;
+			width: 400px;
+			height: 100px;
+			font-size: 20px;
+		}
+   </style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+	window.onload = function () {
+
+		var url = document.referrer,
+			button = document.getElementById('start-button'),
+			tutorial = document.getElementById('tutorial'),
+			image = document.getElementById('chart'),
+   			graph = document.getElementById('graph');
+		if (url.indexOf('preview') > -1) {
+			button.style.display = 'none';
+			image.parentNode.removeChild(image);
+	  	   	graph.parentNode.removeChild(graph);
+		} else {
+			button.style.display = 'block';
+			tutorial.style.display = 'none';
+		};
+	};
+   	function buttonClick() {
+   		var button = document.getElementById('start-button'),
+   			first = document.getElementById('first'),
+   			second = document.getElementById('second'),
+   			third = document.getElementById('third'),
+   			fourth = document.getElementById('fourth'),
+   			fourth2 = document.getElementById('fourth2'),
+   			image = document.getElementById('chart'),
+   			graph = document.getElementById('graph'),
+   			content = document.querySelector('.content');
+
+   		button.style.visibility = 'hidden';
+   		window.setTimeout(function () {
+   			fourth.style.visibility = "hidden";
+   			window.setTimeout(function () {
+   				fourth2.style.visibility = "hidden";
+   				window.setTimeout(function () {
+   					third.style.visibility = 'hidden';
+   					window.setTimeout(function () {
+   						second.style.visibility = 'hidden';
+   						window.setTimeout(function () {
+   							first.style.visibility = 'hidden';
+   							window.setTimeout(function () {
+	  	   						image.parentNode.removeChild(image);
+	  	   						graph.parentNode.removeChild(graph);
+	  	   						content.className = '';
+	  	   						content.style.visibility='visible';
+   							}, 5000);	
+   						}, 2000);
+   					}, 2000);
+   				}, 2000);
+   			}, 2000);
+   		}, 2000);
+	}
+   </script>
+</head>
+<body>
+
+<div id="graph">
+	<div id="first"></div>
+	<div id="second"></div>
+	<div id="third"></div>
+	<div id="fourth"></div>
+	<div id="fourth2"></div>
+
+</div>
+<p><button type="button" id="start-button" onClick="javascript: buttonClick();">Click me to Start (Please scroll down to view the chart in full screen, make sure you can see the whole chart)</button>
+<img src="Charts/S1.png" id="chart"/></p>
+
+<div id="tutorial">
+When the HIT starts, you will see a button says 'Click me to Start'. </br>
+After you click the button, a graph will show up, and stay on the screen for a while, then it will <strong>disappear</strong>.</br>
+Some questions will show up, please answer them according to what you read from the graph.
+The graph is like this:</br>
+<strong>Please scroll down to view the chart in full screen, make sure you can see the whole chart.</strong>
+<img id="tutorial-chart" style="position: relative;" src="Charts/sample.png" /></p>
+</div>
+
+<div class="content">
+		<h3>Questions</h3>
+
+	<p>1. What are the ranges of x-axis and y-axis(e.g. 0-1000)?</p>
+	<p><input id="Q1" name="Q1" size="100" type="text" /></p>
+
+	<p>2. Which device is the most expensive with Flappy Bird?</p>
+	<p><input id="Q2" name="Q2" size="100" type="text" /></p>
+
+	<p>3. Any insight from this chart?</p>
+	<p><input id="Q3" name="Q3" size="100" type="text" /></p>
+
+	<p>4. I understand this chart very well.</p>
+	<table border="0" cellpadding="0" cellspacing="4">
+	<tbody>
+		<tr>
+			<td valign="center"><input name="Q4" type="radio" value="1" /></td>
+			<td><span class="answertext">Strongly disagree</span></td>
+			<td valign="center"><input name="Q4" type="radio" value="2" /></td>
+			<td><span class="answertext">Disagree</span></td>
+			<td valign="center"><input name="Q4" type="radio" value="3" /></td>
+			<td><span class="answertext">Uncertain</span></td>
+			<td valign="center"><input name="Q4" type="radio" value="4" /></td>
+			<td><span class="answertext">Agree</span></td>
+			<td valign="center"><input name="Q4" type="radio" value="5" /></td>
+			<td><span class="answertext">Strongly agree</span></td>
+
+		</tr>
+	</tbody>
+	</table>
+
+	<p>5. What is your viewing order when you read a static chart? eg. Start to read from x axis, y axis, legend and content. Please list them the following elements by your reading order (title=1, x-axis=2, y-axis=3, legend=4, content=5.). e.g. 13452</p>
+	<p><input id="Q5" name="Q5" size="100" type="text" /></p>
+
+	<p>6. Please write down three (adjective) words that you think are most appropriate to describe the <strong>effectiveness</strong> of a chart</p>
+	<p><input id="Q5" name="Q6" size="100" type="text" /></p>
+	
+</div>
+</body>
+
+</html>
